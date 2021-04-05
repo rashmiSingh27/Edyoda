@@ -56,8 +56,25 @@ class LinkedList:
         while (current):
             print(current.data, end='=>')
             current = current.next
-    
-     
+            
+    def rotate(self, k):
+
+        if k == 0:
+            return
+        curr = self.head
+        c = 1
+        while (c < k and curr):
+            curr = curr.next
+            c+=1# 50
+        if curr is None:
+            return
+        knode = curr
+        while (curr.next is not None):
+            curr = curr.next  # 60
+        curr.next = self.head
+        self.head = knode.next
+        knode.next = None
+        
     def removeLL(self,k):
         temp = self.head
 
@@ -93,5 +110,9 @@ if __name__ == '__main__':
     #llist.printLL()
     llist.removeLL(8)
     llist.printLL()
+    llist.rotate(5)#5 for last elemnt on first 
+
+    print("\nRotated Linked list")
+    llist.printList()
     # length = llist.length()
     # print("\nlength of linked list is {}".format(length))
