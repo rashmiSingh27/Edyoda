@@ -56,7 +56,8 @@ class LinkedList:
         while (current):
             print(current.data, end='=>')
             current = current.next
-
+    
+     
     def removeLL(self,k):
         temp = self.head
 
