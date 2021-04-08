@@ -1,18 +1,16 @@
 class Node:
-    # constructor
+ 
     def __init__(self, data=None, next=None):
         self.data = data
         self.next = next
 
 
-# A Linked List class with a single head node
+
 class LinkedList:
     def __init__(self):
         self.head = None
 
-    # This function is defined in Linked List class
-    # Appends a new node at the end. This method is
-    # defined inside LinkedList class shown above */
+  
     def append(self, new_data):
         new_node = Node(new_data)
 
@@ -26,9 +24,7 @@ class LinkedList:
 
         last.next = new_node
 
-    # This function is in LinkedList class.
-    # Inserts a new node after the given prev_node. This method is
-    # defined inside LinkedList class shown above */
+   
     def insertAfter(self, prev_node, new_data):
 
         if prev_node is None:
@@ -50,7 +46,7 @@ class LinkedList:
 
         return count
 
-    # print method for the linked list
+    
     def printLL(self):
         current = self.head
         while (current):
@@ -75,6 +71,17 @@ class LinkedList:
         self.head = knode.next
         knode.next = None
         
+    def detectLoop(self):
+        s=set()
+        temp=self.head
+        while(temp):
+            if temp in s:
+                #print("loop found")
+                return True
+            s.add(temp)
+            temp=temp.next
+        return False
+    
     def removeLL(self,k):
         temp = self.head
 
@@ -95,6 +102,7 @@ class LinkedList:
         prev.next = temp.next
 
         temp = None
+      
 
 
 
@@ -108,7 +116,7 @@ if __name__ == '__main__':
 
     # llist.insertAfter(llist.head, 6)
     #llist.printLL()
-    llist.removeLL(8)
+    #llist.removeLL(8)
     llist.printLL()
     llist.rotate(5)#5 for last elemnt on first 
 
@@ -116,3 +124,8 @@ if __name__ == '__main__':
     llist.printList()
     # length = llist.length()
     # print("\nlength of linked list is {}".format(length))
+    llist.head.next.next.next.next = llist.head    
+    if (llist.detectLoop ()):
+        print ("\nLoop found")
+    else:
+        print ("\nNo Loop ")
